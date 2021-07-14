@@ -6,7 +6,7 @@ import { request } from '@/utils/request'
  * @param req 
  */
 export const login = async (req: LoginReq) => {
-  const resp = await request.post<LoginResp>('/user/login', {
+  const resp = await request.post<LoginResp>('/admin/user/login', {
     body: JSON.stringify(req)
   })
   return resp
