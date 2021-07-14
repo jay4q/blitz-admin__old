@@ -1,0 +1,8 @@
+@import "./antd";
+
+// 这个文件的目的，是为了让 tailwindcss 能够通过CSS变量，获取到 Antd 的样式配置参数
+// 实现集中化的样式参数控制
+
+:root {
+  --primary-color: @primary-color;
+}
