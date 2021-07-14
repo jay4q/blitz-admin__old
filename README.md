@@ -1,6 +1,13 @@
-# 腾讯云开发管理站点｜模版
+# 腾讯云开发管理站点｜模版
 
-基于 [腾讯云开发](https://cloud.tencent.com/document/product/876/34654) 的管理端模板
+基于 [腾讯云开发](https://cloud.tencent.com/document/product/876/34654) 的管理端模板，支持以下特性：
+
+1. 基于 `react` 并引入 `nextjs` 作为基础开发框架
+2. 支持使用 typescript 进行开发
+3. 支持使用 `antd` 并配合 `tailwindcss` 快速开发设计，无需显式编写 css 代码
+4. 支持一些通用的能力，如 用户登录登出、富文本文件编辑
+5. 支持一件部署至腾讯云开发环境
+6. 等等
 
 ## 准备工作
 
