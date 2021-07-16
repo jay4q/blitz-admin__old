@@ -1,6 +1,6 @@
-import { MENUS } from '@/apis/menus/query'
 import { Footer } from '@/components/Footer'
 import { APP_NAME } from '@/configs/meta'
+import { SIDE_MENUS } from '@/configs/route'
 import { isArrayEmpty } from '@/utils/utils'
 import { Layout, Menu } from 'antd'
 import { useRouter } from 'next/router'
@@ -15,7 +15,7 @@ const UserMenu: FunctionComponent = () => {
   return (
     <Menu theme='dark' mode='inline' selectedKeys={[pathname]} onClick={({ key }) => push(key)}>
       {
-        MENUS?.map(menu => {
+        SIDE_MENUS?.map(menu => {
           if (isArrayEmpty(menu.children)) {
             return (
               <Menu.Item key={menu.path} icon={menu.icon ? <menu.icon /> : null}>

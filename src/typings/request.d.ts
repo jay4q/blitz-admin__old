@@ -20,3 +20,11 @@ interface BaseModel {
   updatedAt: Date
   deletedAt: Date
 }
+
+interface MenuModel {
+  path: string
+  name: string
+  icon?: import('react-icons').IconType
+  // ! 这里最多一层子目录即可
+  children?: MenuModel[]
+}

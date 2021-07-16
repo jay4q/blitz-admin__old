@@ -103,6 +103,12 @@ module.exports = {
 + [ ] 左上角显示 `欢迎 ${nickname}` 并支持退出登录。数据和逻辑已完成，请参考 `./src/models/user`
 + [ ] 图集上传能力
 
+### 设计
+
++ [ ] Logo设计
++ [ ] 加入自定义的 404 页
++ [ ] 管理页仅限右侧滑动
+
 ## 参考
 
 + [如何配置next-less-antd](https://github.com/SolidZORO/mkn)

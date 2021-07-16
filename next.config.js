@@ -7,7 +7,7 @@ const path = require('path')
 const { config } = require('dotenv')
 
 const env = config({
-  path: path.resolve(process.cwd(), '.env.production.local')
+  path: path.resolve(process.cwd(), process.env.NODE_ENV === 'development' ? '.env.development.local' : '.env.production.local')
 }).parsed || {}
 
 const plugins =
@@ -32,7 +32,4 @@ const plugins =
 
 module.exports = withPlugins(plugins, {
   basePath: env.NEXT_PUBLIC_TCB_SUBPATH || '',
-  // future: {
-  //   webpack5: true,
-  // },
 })
