@@ -39,7 +39,6 @@
 + 即便 `nextjs` 支持服务端渲染，但由于管理端没必要搜索引擎优化，因此单纯以 **客户端渲染** 的方法编写页面和组件即可
 + `node-vibrant` 目前锁定在 3.1.6 版本，待 [官方](https://github.com/Vibrant-Colors/node-vibrant) 升级完成后再升级
 + 不要用 `antd` 自带的图标，请使用 [react-icons](https://react-icons.github.io/react-icons)
-+ 暂时先不要升级 `next` ，待 `next-plugin-antd-less` 兼容后再更新
 
 ### 客户端组件
 
@@ -99,14 +98,10 @@ module.exports = {
 + [ ] 编辑器多媒体上传组件二次选择失效的问题（应该是因为重复选择相同文件导致的）
 + [ ] 「待定」封装云函数和HTTP请求
 
-### UI设计
+### 组件设计
 
 + [ ] 左上角显示 `欢迎 ${nickname}` 并支持退出登录。数据和逻辑已完成，请参考 `./src/models/user`
-
-### 框架设计
-
-+ [ ] 「待定」支持图集上传能力
-+ [ ] 使用 JSON 动态生成表单，依赖 [X-Render](https://x-render.gitee.io/)
++ [ ] 图集上传能力
 
 ## 参考
 
