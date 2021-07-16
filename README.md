@@ -94,9 +94,8 @@ module.exports = {
 
 ## Todo
 
-+ [x] 对接云函数和用户登录
-+ [x] 验证线上云函数
-+ [x] `./next.config.js` 文件直接读取环境变量中的 `NEXT_PUBLIC_TCB_SUBPATH`
++ [x] 通过 http 接入云函数，以及用户登录
++ [x] 升级至 `nextjs@11`
 + [ ] 编辑器多媒体上传组件二次选择失效的问题（应该是因为重复选择相同文件导致的）
 + [ ] 「待定」封装云函数和HTTP请求
 
@@ -111,5 +110,5 @@ module.exports = {
 
 ## 参考
 
-+ [如何配置 next & less & antd](https://github.com/SolidZORO/mkn)
++ [如何配置next-less-antd](https://github.com/SolidZORO/mkn)
 + [腾讯云开发工具](https://docs.cloudbase.net/api-reference/webv2/initialization.html)

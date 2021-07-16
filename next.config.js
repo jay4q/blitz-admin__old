@@ -1,9 +1,9 @@
-const path = require('path')
 const withPlugins = require('next-compose-plugins')
 const withAntdLess = require('next-plugin-antd-less')
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
+const path = require('path')
 const { config } = require('dotenv')
 
 const env = config({
@@ -31,8 +31,8 @@ const plugins =
   ]
 
 module.exports = withPlugins(plugins, {
-  basePath: '/' + env.NEXT_PUBLIC_TCB_SUBPATH || '',
-  future: {
-    webpack5: true,
-  },
+  basePath: env.NEXT_PUBLIC_TCB_SUBPATH || '',
+  // future: {
+  //   webpack5: true,
+  // },
 })
