@@ -1572,11 +1572,6 @@ fbjs@^0.8.15:
     setimmediate "^1.0.5"
     ua-parser-js "^0.7.18"
 
-figlet@^1.5.0:
-  version "1.5.0"
-  resolved "https://registry.npm.taobao.org/figlet/download/figlet-1.5.0.tgz#2db4d00a584e5155a96080632db919213c3e003c"
-  integrity sha1-LbTQClhOUVWpYIBjLbkZITw+ADw=
-
 file-type@^9.0.0:
   version "9.0.0"
   resolved "https://registry.nlark.com/file-type/download/file-type-9.0.0.tgz#a68d5ad07f486414dfb2c8866f73161946714a18"
