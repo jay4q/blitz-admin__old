@@ -7,7 +7,8 @@
 3. 支持使用 `antd` 并配合 `tailwindcss` 快速开发设计，无需显式编写 css 代码
 4. 支持一些通用的能力，如 用户登录登出、富文本文件编辑
 5. 支持一件部署至腾讯云开发环境
-6. 等等
+6. 配合 [blitz-func](https://github.com/jay4q/blitz-func) 开箱即用
+7. 等等
 
 ## 准备工作
 
@@ -41,6 +42,7 @@
   + 「务必」只在客户端引入 富文本编辑器、上传、图片展示组件
 + 「切忌」使用 `antd` 自带的图标，请使用 [react-icons](https://react-icons.github.io/react-icons)
 + 「建议」使用http请求腾讯云函数，这样保证了本地和产线请求的一致性。框架已默认支持，使用 `./src/utils/request.ts` 即可
++ 修改环境变量后，需要重新启动
 
 ### 客户端组件
 

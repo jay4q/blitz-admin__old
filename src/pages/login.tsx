@@ -6,7 +6,7 @@ import { APP_NAME, APP_DESC } from '@/configs/meta'
 import Head from 'next/head'
 import { Footer } from '@/components/Footer'
 import FormItem from 'antd/lib/form/FormItem'
-import { Input, Button } from 'antd'
+import { Input, Button, Form } from 'antd'
 import { useUser } from '@/models/user'
 
 /**
@@ -39,7 +39,7 @@ const Page: FunctionComponent = () => {
             <h1 className='text-4xl tracking-wide'>🎨 {APP_NAME}</h1>
             <p className='text-sm text-gray-400 tracking-wide'>{APP_DESC}</p>
             <h2 className='mt-10 mb-6 text-lg'>账户密码登录</h2>
-            <div className='w-full flex-grow'>
+            <Form className='w-full flex-grow'>
               <FormItem validateStatus={errors.username && 'error'} help={errors.username && '😉 请填写您的用户名'}>
                 <Input
                   size='large'
@@ -60,8 +60,9 @@ const Page: FunctionComponent = () => {
                 type='primary'
                 size='large'
                 onClick={handleSubmit(onSubmit)}
+                htmlType='submit'
               >登录</Button>
-            </div>
+            </Form>
           </div>
           <div className='flex-grow'></div>
           <Footer />
