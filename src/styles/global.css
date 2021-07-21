@@ -7,11 +7,11 @@
 }
 
 #nprogress .bar {
-  background-color: theme("colors.black");
+  background-color: theme("colors.primary");
 }
 
 #nprogress .peg {
-  box-shadow: 0 0 10px theme("colors.black"), 0 0 5px theme("colors.black");
+  box-shadow: 0 0 10px theme("colors.primary"), 0 0 5px theme("colors.primary");
 }
 
 .bf-controlbar {
