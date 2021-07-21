@@ -57,12 +57,12 @@ export const Dashboard: FunctionComponent = ({ children }) => {
           </div>
           <UserMenu />
         </Sider>
-        <Layout>
-          <Header className='!bg-white'></Header>
-          <Content className='bg-white p-6 m-6 mb-0'>
+        <Layout className='min-h-screen overflow-auto'>
+          <Header className='!bg-white flex-shrink-0'></Header>
+          <Content className='bg-white p-6 m-6 mb-0 !flex-shrink-0'>
             {children}
           </Content>
-          <Footer className='mt-0 h-16' />
+          <Footer className='mt-0 h-16 flex-shrink-0' />
         </Layout>
       </Layout>
     </Layout>
