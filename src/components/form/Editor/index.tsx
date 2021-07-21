@@ -65,7 +65,7 @@ export const Editor: FunctionComponent<Props> = ({ value, onChange }) => {
   ]
 
   return (
-    <div className='w-full border-2 border-gray-400'>
+    <div className='w-full border border-gray-300'>
       <BraftEditor
         value={editorState}
         onChange={handleChange}

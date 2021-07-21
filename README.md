@@ -103,7 +103,6 @@ module.exports = {
 
 ### 组件设计
 
-+ [ ] 右上角显示欢迎信息并支持退出登录。数据和逻辑已完成，请参考 `./src/models/user`
 + [ ] 单图和图集上传能力
 + [ ] `node-vibrant` 目前锁定在 3.1.6 版本，待 [官方](https://github.com/Vibrant-Colors/node-vibrant) 升级完成后再升级
 
@@ -111,7 +110,6 @@ module.exports = {
 
 + [x] 管理页仅限右侧滑动
 + [x] 加入 404 页
-+ [ ] Logo设计
 
 ## 参考
 

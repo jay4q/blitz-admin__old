@@ -8,6 +8,7 @@ import { Footer } from '@/components/Footer'
 import FormItem from 'antd/lib/form/FormItem'
 import { Input, Button, Form } from 'antd'
 import { useUser } from '@/models/user'
+import { Logo } from '@/components/Logo'
 
 /**
  * 登录页
@@ -31,14 +32,14 @@ const Page: FunctionComponent = () => {
         <title>用户登录</title>
       </Head>
       <div className='w-full h-screen bg-[#f0f2f5] flex flex-col items-center  justify-between'>
-        <div className='flex flex-col h-full items-center pt-36'>
+        <div className='flex flex-col h-full items-center pt-20'>
           <div className='flex flex-col items-center min-w-[420px] px-6 py-16 bg-white rounded-lg'>
-            {
-              // todo: logo 没给到
-            }
-            <h1 className='text-4xl tracking-wide'>🎨 {APP_NAME}</h1>
+            <h1 className='flex items-center'>
+              <Logo className='!text-4xl' />
+              <span className='text-4xl tracking-wide ml-2'>{APP_NAME}</span>
+            </h1>
             <p className='text-sm text-gray-400 tracking-wide'>{APP_DESC}</p>
-            <h2 className='mt-10 mb-6 text-lg'>账户密码登录</h2>
+            <h2 className='mt-10 mb-6 text-lg'>账号密码登录</h2>
             <Form className='w-full flex-grow'>
               <FormItem validateStatus={errors.username && 'error'} help={errors.username && '😉 请填写您的用户名'}>
                 <Input
