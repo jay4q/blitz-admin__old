@@ -1,10 +1,9 @@
-import { FunctionComponent, useCallback, useMemo, useState } from 'react'
+import { FunctionComponent, useCallback, useState } from 'react'
 import BraftEditor, { BuiltInControlType, EditorState, ExtendControlType, ImageControlType } from 'braft-editor'
 import { ContentUtils } from 'braft-utils'
-import { ImageUploader } from './ImageUploader'
-import { VideoUploader } from './VideoUploader'
 import 'braft-editor/dist/index.css'
 import { getCloudUrl } from '@/utils/cloudbase'
+import { EditorUploader } from './EditorUploader'
 
 type Props = {
   value: string
@@ -31,7 +30,8 @@ export const Editor: FunctionComponent<Props> = ({ value, onChange }) => {
       key: 'img-uploader',
       type: 'component',
       component: (
-        <ImageUploader
+        <EditorUploader
+          type='image'
           onChange={cloudUrl => {
             const state = ContentUtils.insertMedias(editorState, [
               {
@@ -48,7 +48,8 @@ export const Editor: FunctionComponent<Props> = ({ value, onChange }) => {
       key: 'video-uploader',
       type: 'component',
       component: (
-        <VideoUploader
+        <EditorUploader
+          type='media'
           onChange={cloudUrl => {
             const state = ContentUtils.insertMedias(editorState, [
               {

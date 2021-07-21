@@ -1,7 +1,7 @@
-require('@/styles/antd.less')
-require('@/styles/antd-css.less')
 import 'nprogress/nprogress.css'
 import '@/styles/global.css'
+require('@/styles/antd.less')
+require('@/styles/antd-css.less')
 import { useGlobalLoading } from '@/hooks'
 import { AppProps } from 'next/app'
 import { LayoutWrapper } from '@/layouts'
