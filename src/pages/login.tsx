@@ -1,14 +1,14 @@
 import { LoginReq } from '@/apis/user/types'
-import { Fragment, FunctionComponent } from 'react'
+import { FunctionComponent } from 'react'
 import { useForm } from 'react-hook-form'
 import { useBoolean } from 'ahooks'
 import { APP_NAME, APP_DESC } from '@/configs/meta'
-import Head from 'next/head'
 import { Footer } from '@/components/Footer'
 import FormItem from 'antd/lib/form/FormItem'
 import { Input, Button, Form } from 'antd'
 import { useUser } from '@/models/user'
 import { Logo } from '@/components/Logo'
+import { Head } from '@/components/Head'
 
 /**
  * 登录页
@@ -27,10 +27,8 @@ const Page: FunctionComponent = () => {
   }
 
   return (
-    <Fragment>
-      <Head>
-        <title>用户登录</title>
-      </Head>
+    <>
+      <Head title='用户登录' />
       <div className='w-full h-screen bg-[#f0f2f5] flex flex-col items-center  justify-between'>
         <div className='flex flex-col h-full items-center pt-20'>
           <div className='flex flex-col items-center min-w-[420px] px-6 py-16 bg-white rounded-lg'>
@@ -69,7 +67,7 @@ const Page: FunctionComponent = () => {
           <Footer />
         </div>
       </div>
-    </Fragment>
+    </>
   )
 }
 

@@ -1,28 +1,15 @@
-import Head from 'next/head'
-import { Fragment, FunctionComponent, useState } from 'react'
-import dynamic from 'next/dynamic'
-import {Button} from 'antd'
-
-const Editor = dynamic(
-  // @ts-ignore
-  () => import('@/components/form/Editor').then(mod => mod.Editor),
-  { ssr: false }
-)
+import { Head } from '@/components/Head'
+import { FunctionComponent } from 'react'
 
 /**
- * 首页
+ * 项目概述
  */
 const Page: FunctionComponent = () => {
-  const [value, setValue] = useState('')
 
   return (
-    <Fragment>
-      <Head>
-        <title>首页</title>
-      </Head>
-      <Button className='mb-6' onClick={() => console.log(value)}>看下结果</Button>
-      <Editor value={value} onChange={setValue}></Editor>
-    </Fragment>
+    <>
+      <Head title='项目概述' />
+    </>
   )
 }
 

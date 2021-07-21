@@ -31,7 +31,7 @@ const LayoutMenu: FunctionComponent = () => {
             <SubMenu key={menu.path} title={menu.name} icon={menu.icon ? <menu.icon /> : null}>
               {
                 menu.children?.map(submenu => (
-                  <Menu.Item key={submenu.path}>
+                  <Menu.Item key={submenu.path} icon={submenu.icon ? <submenu.icon /> : null}>
                     {submenu.name}
                   </Menu.Item>
                 ))
