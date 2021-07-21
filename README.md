@@ -36,9 +36,11 @@
 
 ## 注意事项和约定
 
-+ 即便 `nextjs` 支持服务端渲染，但由于管理端没必要搜索引擎优化，因此单纯以 **客户端渲染** 的方法编写页面和组件即可
-+ `node-vibrant` 目前锁定在 3.1.6 版本，待 [官方](https://github.com/Vibrant-Colors/node-vibrant) 升级完成后再升级
-+ 不要用 `antd` 自带的图标，请使用 [react-icons](https://react-icons.github.io/react-icons)
++ 中后台管理端，是用户态优先并且没有SEO的必要，仅考虑前端渲染和静态文件部署，因此
+  + 「切忌」使用 nextjs 中服务端渲染的部分，例如 `getInitalProps` 等
+  + 「务必」只在客户端引入 富文本编辑器、上传、图片展示组件
++ 「切忌」使用 `antd` 自带的图标，请使用 [react-icons](https://react-icons.github.io/react-icons)
++ 「建议」使用http请求腾讯云函数，这样保证了本地和产线请求的一致性。框架已默认支持，使用 `./src/utils/request.ts` 即可
 
 ### 客户端组件
 
@@ -96,18 +98,18 @@ module.exports = {
 + [x] 通过 http 接入云函数，以及用户登录
 + [x] 升级至 `nextjs@11`
 + [x] 编辑器多媒体上传组件二次选择失效的问题（应该是因为重复选择相同文件导致的）
-+ [ ] 「待定」封装云函数和HTTP请求
 
 ### 组件设计
 
 + [ ] 右上角显示欢迎信息并支持退出登录。数据和逻辑已完成，请参考 `./src/models/user`
 + [ ] 单图和图集上传能力
++ [ ] `node-vibrant` 目前锁定在 3.1.6 版本，待 [官方](https://github.com/Vibrant-Colors/node-vibrant) 升级完成后再升级
 
 ### 设计
 
-+ [ ] Logo设计
-+ [x] 加入 404 页
 + [ ] 管理页仅限右侧滑动
++ [x] 加入 404 页
++ [ ] Logo设计
 
 ## 参考
 

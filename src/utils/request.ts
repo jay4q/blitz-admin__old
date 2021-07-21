@@ -5,7 +5,7 @@ import { unstable_batchedUpdates } from 'react-dom'
 import { useUser } from '@/models/user'
 import { getAuthHeader } from './cloudbase'
 
-const CODE_MAP: { [key in string]: string } = {
+const HTTP_CODE_MAP: { [key in string]: string } = {
   "400": "请求内容有误",
   "401": "您尚未登录",
   "403": "抱歉，您没有访问权限",
@@ -26,20 +26,20 @@ const errorHandler = (e: ResponseError<IResponse>): IResponse => {
     return {
       data: e.data.data,
       code: e.data.code || e.response.status,
-      message: e.data.message || CODE_MAP[`${e.response.status}`] || '服务器异常，请稍后再试'
+      message: e.data.message || HTTP_CODE_MAP[`${e.response.status}`] || '服务器异常，请稍后再试'
     }
   } else {
     // 请求发不出去
-    message.error(CODE_MAP['999'])
+    message.error(HTTP_CODE_MAP['999'])
     return {
       code: 999,
-      message: CODE_MAP['999']
+      message: HTTP_CODE_MAP['999']
     }
   }
 }
 
 export const request = extend({
-  prefix: process.env.NEXT_PUBLIC_TCB_RESTFUL,
+  prefix: process.env.NEXT_PUBLIC_TCB_FUNC_API,
   headers: {
     // 🤔️ umi-request 这里有点问题，默认是 'text/plain'，但文档里说默认是 'application/json'
     'Content-Type': 'application/json;charset=UTF-8',

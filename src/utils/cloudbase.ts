@@ -58,7 +58,7 @@ export const uploadFile = async (file: File) => {
   const fileType = /(?<=\.)[A-Za-z0-9]{1,}/.exec(file.name)
   if (!fileType) return undefined
 
-  const res = await app!
+  const res = await app
     .uploadFile({
       cloudPath: `uploads/${dayjs().format('YYYY-MM-DD')}/${uuid().replaceAll('-', '')}.${fileType[0]}`,
       // @ts-ignore
