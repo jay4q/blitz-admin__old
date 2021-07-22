@@ -31,5 +31,5 @@ const plugins =
   ]
 
 module.exports = withPlugins(plugins, {
-  basePath: env.NEXT_PUBLIC_TCB_SUBPATH || '',
+  basePath: env.NEXT_PUBLIC_TCB_WEB_SUBPATH || '',
 })

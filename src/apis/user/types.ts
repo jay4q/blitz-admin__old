@@ -8,11 +8,11 @@ export type LoginReq = {
   password: string
 }
 
-export type GetUserProfileResp = IResponse<{
+export type GetUserProfileResp = {
   user: UserModel
-}>
+}
 
-export type LoginResp = IResponse<{
+export type LoginResp = {
   token: string
   user: UserModel
-}>
+}

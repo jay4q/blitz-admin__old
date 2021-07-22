@@ -8,7 +8,7 @@ const env = config({
 })
 
 if (!env.error) {
-  const subpath = env.parsed.NEXT_PUBLIC_TCB_SUBPATH
+  const subpath = env.parsed.NEXT_PUBLIC_TCB_WEB_SUBPATH
   const envId = env.parsed.NEXT_PUBLIC_TCB_ENV_ID
 
   // ❕ 注意部署强制要求在子路径下
@@ -20,7 +20,7 @@ if (!env.error) {
     await $`tcb hosting deploy ./out ${subpath} -e ${envId}`
     console.log(chalk.green('🎉🎉🎉 成功部署网站'))
   } else {
-    console.log(chalk.red(`请检查 ${ENV_FILE} 内的 NEXT_PUBLIC_TCB_ENV_ID 和 NEXT_PUBLIC_TCB_SUBPATH 变量是否填写`))
+    console.log(chalk.red(`请检查 ${ENV_FILE} 内的环境变量是否填写`))
   }
 } else {
   console.log(chalk.red('😭😭😭 部署失败'))

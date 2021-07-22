@@ -38,8 +38,25 @@ const errorHandler = (e: ResponseError<IResponse>): IResponse => {
   }
 }
 
+/**
+ * 业务异常处理
+ * @param resp 
+ */
+export const businessErrorHandler = <ResponseData = any>(resp: IResponse<ResponseData>) => {
+  if (200 !== resp.code) {
+    if (401 === resp.code) {
+      unstable_batchedUpdates(() => {
+        useUser.getState().handleLogout()
+      })
+    } else {
+      // 普通错误，弹框提示即可
+      message.error(resp.message)
+    }
+  }
+}
+
 export const request = extend({
-  prefix: process.env.NEXT_PUBLIC_TCB_FUNC_API,
+  prefix: process.env.NEXT_PUBLIC_TCB_HTTP_API,
   headers: {
     // 🤔️ umi-request 这里有点问题，默认是 'text/plain'，但文档里说默认是 'application/json'
     'Content-Type': 'application/json;charset=UTF-8',
@@ -47,8 +64,7 @@ export const request = extend({
   errorHandler,
 })
 
-// 请求带上业务平台 token
-// 同时带上腾讯云 http 请求权鉴
+// 带上请求鉴权信息
 request.use(async (ctx, next) => {
   const token = localStorage.getItem(STORE_TOKEN)
   if (typeof token === 'string') {
@@ -64,19 +80,7 @@ request.use(async (ctx, next) => {
   await next()
 })
 
-// 业务异常统一处理
 request.use(async (ctx, next) => {
   await next()
-
-  const res = ctx.res as IResponse
-  if (200 !== res.code) {
-    if (401 === res.code) {
-      unstable_batchedUpdates(() => {
-        useUser.getState().handleLogout()
-      })
-    } else {
-      // 普通错误，弹框提示即可
-      message.error(res.message)
-    }
-  }
+  businessErrorHandler(ctx.res as IResponse)
 })

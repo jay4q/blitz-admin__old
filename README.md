@@ -38,10 +38,10 @@
 ## 注意事项和约定
 
 + 中后台管理端，是用户态优先并且没有SEO的必要，仅考虑前端渲染和静态文件部署，因此
-  + 「切忌」使用 nextjs 中服务端渲染的部分，例如 `getInitalProps` 等
-  + 「务必」只在客户端引入 富文本编辑器、上传、图片展示组件
-+ 「切忌」使用 `antd` 自带的图标，请使用 [react-icons](https://react-icons.github.io/react-icons)
-+ 「建议」使用http请求腾讯云函数，这样保证了本地和产线请求的一致性。框架已默认支持，使用 `./src/utils/request.ts` 即可
+  + 切忌：使用 nextjs 中服务端渲染的部分，例如 `getInitalProps` 等
+  + 确保：仅在客户端引入 富文本编辑器、上传、图片展示组件
++ 切忌：使用 `antd` 自带的图标，请使用 [react-icons](https://react-icons.github.io/react-icons)
++ 建议：使用 `./src/utils/tcbRequest.ts` 发起请求，这样可以自由在 http 和 sdk 中切换请求云函数
 + 修改环境变量后，需要重新启动
 
 ### 客户端组件
@@ -110,7 +110,7 @@ module.exports = {
   + [ ] 尝试并验证使用 antd-tree 实现
   + [ ] 如何高效地记录排序，让每次排序在后端更新个数最少
 + [ ] 图片、视频、音频、文件上传（同时支持多个上传）
-  + [ ] 其中，图片如果可行的话，直接封装一下 antd 图片上传组件即可
++ [ ] 图片组件可以尝试直接封装一下 antd 图片上传组件即可
 + [ ] `node-vibrant` 目前锁定在 3.1.6 版本，待 [官方](https://github.com/Vibrant-Colors/node-vibrant) 升级完成后再升级
 + [ ] 「待定」富文本编辑器使用 [mammoth](https://github.com/mwilliamson/mammoth.js) 将word转换为html
 
