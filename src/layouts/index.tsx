@@ -13,8 +13,8 @@ export const LayoutWrapper: FunctionComponent = ({ children }) => {
 
   if (!isFinishIniting) {
     return (
-      <div className='fixed w-full h-full inset-0 flex items-center justify-center'>
-        <Spin size='large' />
+      <div className='fixed w-full h-full inset-0 flex flex-col items-center'>
+        <Spin size='large' className='!absolute top-1/4' />
       </div>
     )
   }

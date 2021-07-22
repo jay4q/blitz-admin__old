@@ -70,7 +70,7 @@ const LayoutHeader: FunctionComponent = () => {
   )
 
   return (
-    <Header className='!bg-white flex-shrink-0 !px-6 flex items-center justify-end !h-12'>
+    <Header className='!bg-white flex-shrink-0 !px-6 flex items-center justify-end !h-12 z-0' style={{ boxShadow: '0 1px 4px rgb(0 21 41 / 8%)' }}>
       <Dropdown overlay={dropDown}>
         <span className='flex items-center h-12 px-3 cursor-pointer transition-colors duration-300 hover:bg-gray-50'>
           <RiUserLine className='text-base text-gray-500' />
@@ -96,9 +96,9 @@ export const Dashboard: FunctionComponent = ({ children }) => {
         </Sider>
         <Layout className='min-h-screen overflow-auto'>
           <LayoutHeader />
-          <Content className='bg-white p-6 m-6 mb-0 !flex-shrink-0'>
+          <div className='flex flex-col flex-auto flex-shrink-0 min-h-0'>
             {children}
-          </Content>
+          </div>
           <Footer className='mt-0 h-16 flex-shrink-0' />
         </Layout>
       </Layout>

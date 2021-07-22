@@ -106,10 +106,13 @@ module.exports = {
 
 ### 组件设计
 
-+ [ ] 验证一下菜单页使用 [树形控件](https://ant.design/components/tree-cn/#components-tree-demo-line) 进行编辑的可行性
++ [ ] 菜单页使用拖拽组件
+  + [ ] 尝试并验证使用 antd-tree 实现
+  + [ ] 如何高效地记录排序，让每次排序在后端更新个数最少
 + [ ] 图片、视频、音频、文件上传（同时支持多个上传）
   + [ ] 其中，图片如果可行的话，直接封装一下 antd 图片上传组件即可
 + [ ] `node-vibrant` 目前锁定在 3.1.6 版本，待 [官方](https://github.com/Vibrant-Colors/node-vibrant) 升级完成后再升级
++ [ ] 「待定」富文本编辑器使用 [mammoth](https://github.com/mwilliamson/mammoth.js) 将word转换为html
 
 ### 设计
 
@@ -120,3 +123,5 @@ module.exports = {
 
 + [如何配置next-less-antd](https://github.com/SolidZORO/mkn)
 + [腾讯云开发工具](https://docs.cloudbase.net/api-reference/webv2/initialization.html)
++ [将word文档转换为html](https://github.com/mwilliamson/mammoth.js)
++ [react-beautiful-dnd](https://github.com/atlassian/react-beautiful-dnd)

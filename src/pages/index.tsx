@@ -1,15 +1,13 @@
-import { Head } from '@/components/Head'
+import { PageLayout } from '@/layouts/PageLayout'
 import { FunctionComponent } from 'react'
 
 /**
  * 项目概述
  */
 const Page: FunctionComponent = () => {
-
   return (
-    <>
-      <Head title='项目概述' />
-    </>
+    <PageLayout title='项目概述'>
+    </PageLayout>
   )
 }
 
