@@ -42,6 +42,8 @@
   + 确保：仅在客户端引入 富文本编辑器、上传、图片展示组件
 + 切忌：使用 `antd` 自带的图标，请使用 [react-icons](https://react-icons.github.io/react-icons)
 + 建议：使用 `./src/utils/tcbRequest.ts` 发起请求，这样可以自由在 http 和 sdk 中切换请求云函数
+  + 例如开发环境，连接本地用 web-server 模拟的云函数，这时就需要使用 http 请求
+  + 例如产线环境，官方建议直接使用 sdk 请求云函数（http 触发云函数有限制）
 + 修改环境变量后，需要重新启动
 
 ### 客户端组件

@@ -17,3 +17,10 @@
 .bf-controlbar {
   box-shadow: inset 0 -1px 0 0 theme("colors.gray.300") !important;
 }
+
+.ant-tree-title {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}

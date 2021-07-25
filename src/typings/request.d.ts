@@ -15,10 +15,10 @@ type IPaginationResp<Item = any> = {
 }
 
 interface BaseModel {
-  id: number
-  createdAt: Date
-  updatedAt: Date
-  deletedAt: Date
+  _id: number
+  created_at: Date
+  updated_at: Date
+  deleted_at: Date
 }
 
 interface MenuModel {

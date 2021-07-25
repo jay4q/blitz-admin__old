@@ -6,7 +6,7 @@ import { FunctionComponent, HTMLAttributes } from 'react'
 type Props = HTMLAttributes<HTMLDivElement> & {
   title: string
   desc?: string
-  theme?: 'white' | 'default'
+  theme?: 'card' | 'default'
 }
 
 const { Title, Paragraph } = Typography
@@ -14,7 +14,7 @@ const { Title, Paragraph } = Typography
 /**
  * 常用的页面布局
  */
-export const PageLayout: FunctionComponent<Props> = ({ title, desc, children, className, theme = 'white', ...restProps }) => {
+export const PageLayout: FunctionComponent<Props> = ({ title, desc, children, className, theme = 'card', ...restProps }) => {
   return (
     <>
       <Head title={title} />
@@ -24,7 +24,7 @@ export const PageLayout: FunctionComponent<Props> = ({ title, desc, children, cl
           desc && <Paragraph className='!mb-0 !mt-3'>{desc}</Paragraph>
         }
       </div>
-      <div className={classNames('flex-auto flex-shrink-0 m-6 mb-0 p-6 bg-white', theme === 'white' && 'bg-white', className)} {...restProps}>
+      <div className={classNames('flex-auto flex-shrink-0 m-6 mb-0', theme === 'card' && 'p-6 bg-white', className)} {...restProps}>
         {children}
       </div>
     </>
