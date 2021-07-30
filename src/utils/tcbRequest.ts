@@ -50,14 +50,14 @@ const callFunction = async <ResponseData = any>(url: string, options: RequestOpt
  * @param url 
  * @param options 
  */
-export const tcbRequest = async <ResponseData = any>(url: string, options?: RequestOptionsInit) => {
+ export const tcbRequest = async <ResponseData = any>(url: string, options?: RequestOptionsInit) => {
   const { data } = options || {}
   const body = typeof data === 'object' ? JSON.stringify(data) : data
   const finalOptions: RequestOptionsInit = { ...(options || {}), data: body }
 
   if (process.env.NEXT_PUBLIC_ENABLE_HTTP === 'true') {
-    return await request(url, finalOptions)
+    return await request<ResponseData>(url, finalOptions)
   } else {
-    return await callFunction(url, finalOptions)
+    return await callFunction<ResponseData>(url, finalOptions)
   }
 }
