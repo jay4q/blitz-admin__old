@@ -733,6 +733,18 @@ binary-extensions@^2.0.0:
   resolved "https://registry.nlark.com/binary-extensions/download/binary-extensions-2.2.0.tgz#75f502eeaf9ffde42fc98829645be4ea76bd9e2d"
   integrity sha1-dfUC7q+f/eQvyYgpZFvk6na9ni0=
 
+blitz-libs@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/blitz-libs/-/blitz-libs-1.0.2.tgz#de7bbc172c04dfd1c40b4f44eeebe79a515b7718"
+  integrity sha512-821NKEvkcKYV9X+phMt0bLM87ImUvHzGhhJ3stTE1Y8JjWSytksNREG/SyLc5ZJHg/goqDA+J4IMlr9wMdJtGg==
+  dependencies:
+    blurhash "^1.1.3"
+    classnames "^2.3.1"
+    medium-zoom "^1.0.6"
+    query-string "^7.0.1"
+    react-intersection-observer "^8.32.0"
+    regenerator-runtime "^0.13.9"
+
 blurhash@^1.1.3:
   version "1.1.3"
   resolved "https://registry.npm.taobao.org/blurhash/download/blurhash-1.1.3.tgz#dc325af7da836d07a0861d830bdd63694382483e"
@@ -2999,6 +3011,16 @@ query-string@^7.0.0:
     split-on-first "^1.0.0"
     strict-uri-encode "^2.0.0"
 
+query-string@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.npmjs.org/query-string/-/query-string-7.0.1.tgz#45bd149cf586aaa582dffc7ec7a8ad97dd02f75d"
+  integrity sha512-uIw3iRvHnk9to1blJCG3BTc+Ro56CBowJXKmNNAm3RulvPBzWLRqKSiiDk+IplJhsydwtuNMHi8UGQFcCLVfkA==
+  dependencies:
+    decode-uri-component "^0.2.0"
+    filter-obj "^1.1.0"
+    split-on-first "^1.0.0"
+    strict-uri-encode "^2.0.0"
+
 querystring-es3@0.2.1, querystring-es3@^0.2.0:
   version "0.2.1"
   resolved "https://registry.nlark.com/querystring-es3/download/querystring-es3-0.2.1.tgz#9ec61f79049875707d69414596fd907a4d711e73"
@@ -3486,6 +3508,11 @@ regenerator-runtime@^0.13.3, regenerator-runtime@^0.13.4:
   version "0.13.7"
   resolved "https://registry.nlark.com/regenerator-runtime/download/regenerator-runtime-0.13.7.tgz#cac2dacc8a1ea675feaabaeb8ae833898ae46f55"
   integrity sha1-ysLazIoepnX+qrrriugziYrkb1U=
+
+regenerator-runtime@^0.13.9:
+  version "0.13.9"
+  resolved "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.13.9.tgz#8925742a98ffd90814988d7566ad30ca3b263b52"
+  integrity sha512-p3VT+cOEgxFsRRA9X4lkI1E+k2/CtnKtU4gcxyaCUreilL/vqI6CdZ3wxVUx3UOUg+gnUOQQcRI7BmSI656MYA==
 
 resize-observer-polyfill@^1.5.0, resize-observer-polyfill@^1.5.1:
   version "1.5.1"

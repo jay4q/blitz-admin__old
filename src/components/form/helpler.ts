@@ -4,7 +4,7 @@ import { convertBlob2File } from '@/utils/utils'
 import { compressAccurately } from 'image-conversion'
 import Vibrant from 'node-vibrant'
 import qs from 'query-string'
-import { getBlurhash } from '../Blur/helper'
+import { getBlurhash } from 'blitz-libs'
 
 /**
  * 根据图片文件得到图片标签
@@ -53,7 +53,7 @@ const handleCompress = async (file: File, image: HTMLImageElement, filename: str
  */
 const handleOptimization = async (image: HTMLImageElement) => {
   // 获取模糊值
-  const hash = await getBlurhash(image)
+  const { hash } = await getBlurhash(image) || {}
   // 获取主色
   const colors = await Vibrant.from(image).getSwatches()
   const color = colors.Vibrant?.getHex()

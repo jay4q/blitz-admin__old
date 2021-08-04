@@ -56,7 +56,7 @@ const callFunction = async <ResponseData = any>(url: string, options: RequestOpt
   const finalOptions: RequestOptionsInit = { ...(options || {}), data: body }
 
   if (process.env.NEXT_PUBLIC_ENABLE_HTTP === 'true') {
-    return await request<ResponseData>(url, finalOptions)
+    return await request<IResponse<ResponseData>>(url, finalOptions)
   } else {
     return await callFunction<ResponseData>(url, finalOptions)
   }
