@@ -99,6 +99,8 @@ module.exports = {
 
 ## Todo
 
++ [ ] 支持 [Markdown 编辑器](https://github.com/Vanessa219/vditor)
++ [ ] 加入 [手绘板](https://github.com/steveruizok/perfect-freehand)
 + [ ] 基础的门户网站结构设计
   + [ ] 菜单：拖拽排序、基础字段编辑
   + [ ] 文章：图片、音视频、文件上传、基础字段编辑
@@ -108,8 +110,6 @@ module.exports = {
 + [ ] 菜单页使用拖拽组件
   + [ ] 尝试并验证使用 antd-tree 实现
   + [ ] 如何高效地记录排序，让每次排序在后端更新个数最少
-+ [ ] 图片、视频、音频、文件上传（同时支持多个上传）
-+ [ ] 图片组件可以尝试直接封装一下 antd 图片上传组件即可
 + [ ] `node-vibrant` 目前锁定在 3.1.6 版本，待 [官方](https://github.com/Vibrant-Colors/node-vibrant) 升级完成后再升级
 + [ ] 「待定」富文本编辑器使用 [mammoth](https://github.com/mwilliamson/mammoth.js) 将word转换为html
 

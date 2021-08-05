@@ -1,10 +1,12 @@
 import { IMAGE_COMPRESS_THRESHOLD, VIDEO_MAX_THRESHOLD } from '@/configs/component'
-import { uploadFile } from '@/utils/cloudbase'
+import { uploadFile as upload } from '@/utils/cloudbase'
 import { convertBlob2File } from '@/utils/utils'
 import { compressAccurately } from 'image-conversion'
 import Vibrant from 'node-vibrant'
 import qs from 'query-string'
 import { getBlurhash } from 'blitz-libs'
+
+type UploadHandler = (file: File) => Promise<string>
 
 /**
  * 根据图片文件得到图片标签
@@ -48,7 +50,7 @@ const handleCompress = async (file: File, image: HTMLImageElement, filename: str
 }
 
 /**
- * 图像优化策略
+ * @description 图像优化策略
  * @param image 
  */
 const handleOptimization = async (image: HTMLImageElement) => {
@@ -62,27 +64,25 @@ const handleOptimization = async (image: HTMLImageElement) => {
 }
 
 /**
- * 处理图片上传
- * @description 包含一系列操作，压缩、获取模糊值、获取主色、获取原始宽高、上传至腾讯云存储
+ * @description 处理图片上传；包含一系列操作，压缩、获取模糊值、获取主色、获取原始宽高、上传至腾讯云存储
  * @param file 
  */
-export const uploadImage = async (file: File) => {
+export const uploadImage: UploadHandler = async file => {
   const image = await getImageElement(file)
   const compressedFile = await handleCompress(file, image, file.name)
   const optmization = await handleOptimization(image)
-  const cloudUrl = await uploadFile(compressedFile as File)
-  // 合并有效参数
+  const cloudUrl = await upload(compressedFile as File)
+
   const search = qs.stringify({ ...optmization, width: image.width, height: image.height }, { skipNull: true })
 
   return cloudUrl + '?' + search
 }
 
 /**
- * 处理音视频上传
- * @description 大文件暂时不允许上传
+ * @description 处理音视频上传；不支持上传大文件
  * @param file 
  */
-export const uploadVideo = async (file: File) => {
+export const uploadVideo: UploadHandler = async file => {
   if (file.size > VIDEO_MAX_THRESHOLD) {
     throw new Error(`禁止上传超过${Math.floor(VIDEO_MAX_THRESHOLD / (1024 * 1024))}MB的文件`)
   }
@@ -91,7 +91,7 @@ export const uploadVideo = async (file: File) => {
   video.preload = 'metadata'
   video.src = URL.createObjectURL(file)
 
-  // 时长
+  // 获取音视频时长
   const duration = await new Promise<number>((resolve) => {
     video.onloadedmetadata = () => {
       window.URL.revokeObjectURL(video.src)
@@ -103,15 +103,19 @@ export const uploadVideo = async (file: File) => {
     }
   })
 
-  // 腾讯云路径
-  const cloudUrl = await uploadFile(file)
+  const cloudUrl = await upload(file)
+  const search = qs.stringify({ duration, name: file.name }, { skipNull: true })
 
-  // 文件名称，去除后缀
-  const filename = /.{1,}(?=\.)/.exec(file.name)
-  if (!filename) throw new Error(`无法获取音视频名称`)
+  return cloudUrl + '?' + search
+}
 
-  // 合并有效参数 命名和时长
-  const search = qs.stringify({ duration, name: filename[0] }, { skipNull: true })
+/**
+ * @description 上传附件
+ * @param file 
+ */
+export const uploadFile: UploadHandler = async file => {
+  const cloudUrl = await upload(file)
+  const search = qs.stringify({ name: file.name }, { skipNull: true })
 
   return cloudUrl + '?' + search
 }
