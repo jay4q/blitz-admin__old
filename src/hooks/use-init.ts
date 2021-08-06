@@ -7,7 +7,7 @@ import { useEffect } from 'react'
  * 处理应用中的初始化事务
  */
 export const useInit = () => {
-  const [isFinishIniting, { setTrue }] = useBoolean(false)
+  const [isFinishIniting, { setTrue: finishLoading }] = useBoolean(false)
   const { getUserInfo, handleLogout } = useUser()
 
   useEffect(() => {
@@ -16,16 +16,12 @@ export const useInit = () => {
       // 初始化腾讯云开发
       const isCloudbaseInit = await getCloudBaseApp()
       if (!isCloudbaseInit) {
-        handleLogout()
+        await handleLogout()
       }
-
       // 初始化用户信息
       await getUserInfo()
 
-      // 关闭加载状态
-      setTimeout(() => {
-        setTrue()
-      }, 500)
+      finishLoading()
     })()
   }, [])
 

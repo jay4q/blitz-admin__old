@@ -28,7 +28,7 @@ type GlobalUser = {
    * @description 不需要联网
    * @param isKickout 是否被踢出
    */
-  handleLogout: (isKickout?: boolean) => void
+  handleLogout: (isKickout?: boolean) => Promise<void>
 
   /**
    * 获取用户最新信息
@@ -54,13 +54,13 @@ export const useUser = create<GlobalUser>(devtools(set => {
         user: resp.data.user,
       })
       // 跳转至首页
-      Router.replace('/')
+      await Router.replace('/')
     }
 
     return resp
   }
 
-  const handleLogout = (isKickout = true) => {
+  const handleLogout = async (isKickout = true) => {
     if (isKickout) {
       message.error('您的登录已过期，请重新登录')
     } else {
@@ -68,7 +68,7 @@ export const useUser = create<GlobalUser>(devtools(set => {
     }
     // 清理缓存和持久化的数据
     localStorage.removeItem(STORE_TOKEN)
-    Router.replace('/login')
+    await Router.replace('/login')
     handleClear()
   }
 
@@ -81,7 +81,7 @@ export const useUser = create<GlobalUser>(devtools(set => {
     } else if (resp.code !== 401) {
       // 获取不到用户信息，判定为登出
       // 跳过 401 判断是因为已经在中间件中判断过了
-      handleLogout()
+      await handleLogout()
     }
     return resp
   }

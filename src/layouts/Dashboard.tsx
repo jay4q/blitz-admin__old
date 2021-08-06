@@ -4,13 +4,13 @@ import { APP_NAME } from '@/configs/meta'
 import { SIDE_MENUS } from '@/configs/route'
 import { useUser } from '@/models/user'
 import { isArrayEmpty } from '@/utils/utils'
-import { Dropdown, Layout, Menu, MenuProps } from 'antd'
+import { Dropdown, Layout, Menu, MenuProps, Spin } from 'antd'
 import { useRouter } from 'next/router'
 import { FunctionComponent, useCallback } from 'react'
 import { RiUserLine, RiLogoutCircleRLine } from 'react-icons/ri'
 
 const { SubMenu } = Menu
-const { Header, Sider, Content } = Layout
+const { Header, Sider } = Layout
 
 const LayoutMenu: FunctionComponent = () => {
   const { pathname, push } = useRouter()
@@ -84,6 +84,8 @@ const LayoutHeader: FunctionComponent = () => {
  * 管理页统一布局
  */
 export const Dashboard: FunctionComponent = ({ children }) => {
+  const { user } = useUser()
+
   return (
     <Layout className='w-full h-screen'>
       <Layout>
@@ -97,8 +99,18 @@ export const Dashboard: FunctionComponent = ({ children }) => {
         <Layout className='min-h-screen overflow-auto'>
           <LayoutHeader />
           <div className='flex flex-col flex-auto flex-shrink-0 min-h-0'>
-            {children}
+            <Spin size='large' />
           </div>
+          {
+            !!user ?
+              <div className='flex flex-col flex-auto flex-shrink-0 min-h-0'>
+                {children}
+              </div>
+              :
+              <div className='flex flex-col flex-auto flex-shrink-0 min-h-0 pt-16'>
+                <Spin size='large' />
+              </div>
+          }
           <Footer className='mt-0 h-16 flex-shrink-0' />
         </Layout>
       </Layout>
