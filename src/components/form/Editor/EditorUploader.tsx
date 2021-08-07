@@ -20,7 +20,7 @@ type State = {
 }
 
 /**
- * 富文本编辑器定制的多媒体上传组件
+ * @description 专为富文本编辑器定制的多媒体上传组件
  */
 export class EditorUploader extends PureComponent<Props, State> {
   readonly state = { loading: false }

@@ -39,7 +39,7 @@ const errorHandler = (e: ResponseError<IResponse>): IResponse => {
 }
 
 /**
- * 业务异常处理
+ * @description 业务异常处理
  * @param resp 
  */
 export const businessErrorHandler = <ResponseData = any>(resp: IResponse<ResponseData>) => {

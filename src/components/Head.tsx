@@ -7,7 +7,7 @@ type Props = {
 }
 
 /**
- * 网页标题
+ * @description 网页标题
  */
 export const Head: FunctionComponent<Props> = ({ title }) => {
   // todo: 可以支持一下直接读取菜单的标题

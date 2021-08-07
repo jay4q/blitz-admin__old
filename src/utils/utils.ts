@@ -1,7 +1,7 @@
 export const isArrayEmpty = (arr?: any[]) => !Array.isArray(arr) || arr.length === 0
 
 /**
- * 将 Blob 类型转换为 File 类型
+ * @description 将 Blob 类型转换为 File 类型
  * @param theBlob 
  * @param fileName 
  */

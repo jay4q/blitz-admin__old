@@ -9,38 +9,39 @@ import { devtools } from 'zustand/middleware'
 
 type GlobalUser = {
   /**
-   * 用户数据
+   * @description 管理员个人资料；内容不存在时，也可以作为正在加载中的标识符
    */
   user?: UserModel
 
   /**
-   * 清理用户信息
+   * @description 清理用户信息
    */
   handleClear: () => void
 
   /**
-   * 处理用户登录
+   * @description 处理用户登录
    */
   handleLogin: typeof login
 
   /**
-   * 处理用户登出
-   * @description 不需要联网
+   * @description 处理用户登出；无需联网
    * @param isKickout 是否被踢出
    */
   handleLogout: (isKickout?: boolean) => Promise<void>
 
   /**
-   * 获取用户最新信息
+   * @description 获取用户最新信息
    */
   getUserInfo: typeof getUserProfile
 }
 
+const USER_INITIAL_VALUES = {
+  user: undefined,
+}
+
 export const useUser = create<GlobalUser>(devtools(set => {
   const handleClear = () => {
-    set({ 
-      user: undefined,
-    })
+    set(USER_INITIAL_VALUES)
   }
 
   const handleLogin = async (req: LoginReq) => {
@@ -49,10 +50,9 @@ export const useUser = create<GlobalUser>(devtools(set => {
     if (200 === resp.code && resp.data) {
       message.success('成功登录 🎉🎉🎉')
       // 缓存并持久化数据
+      const { token, ...restData } = resp.data
       localStorage.setItem(STORE_TOKEN, resp.data.token)
-      set({
-        user: resp.data.user,
-      })
+      set(restData)
       // 跳转至首页
       await Router.replace('/')
     }
@@ -75,9 +75,7 @@ export const useUser = create<GlobalUser>(devtools(set => {
   const getUserInfo = async () => {
     const resp = await getUserProfile()
     if (resp.data) {
-      set({
-        user: resp.data.user,
-      })
+      set(resp.data)
     } else if (resp.code !== 401) {
       // 获取不到用户信息，判定为登出
       // 跳过 401 判断是因为已经在中间件中判断过了
@@ -91,9 +89,6 @@ export const useUser = create<GlobalUser>(devtools(set => {
     handleLogin,
     handleLogout,
     getUserInfo,
-    // 启动应用时，用户信息是空的
-    // 因此，也可以将空信息作为信息加载中的标识
-    user: undefined,
-    sideMenus: undefined
+    ...USER_INITIAL_VALUES,
   }
 }))

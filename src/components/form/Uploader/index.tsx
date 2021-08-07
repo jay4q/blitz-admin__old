@@ -14,6 +14,9 @@ type State = {
   loading: boolean
 }
 
+/**
+ * @description 图片、音视频、文件上传工具；支持多个
+ */
 export class Uploader extends PureComponent<UploaderProps, State> {
   readonly state: State = {
     loading: false

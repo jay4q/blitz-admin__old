@@ -12,7 +12,7 @@ type Props = HTMLAttributes<HTMLDivElement> & {
 const { Title, Paragraph } = Typography
 
 /**
- * 常用的页面布局
+ * @description 常用的页面布局
  */
 export const PageLayout: FunctionComponent<Props> = ({ title, desc, children, className, theme = 'card', ...restProps }) => {
   return (

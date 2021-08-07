@@ -81,9 +81,9 @@ const LayoutHeader: FunctionComponent = () => {
 }
 
 /**
- * 管理页统一布局
+ * @description 管理页统一布局
  */
-export const Dashboard: FunctionComponent = ({ children }) => {
+export const DashboardLayout: FunctionComponent = ({ children }) => {
   const { user } = useUser()
 
   return (

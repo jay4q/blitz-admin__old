@@ -14,7 +14,7 @@ const IMAGE_CONTROLS: ImageControlType[] = ['remove']
 const EXCLUDE_CONTROLS: BuiltInControlType[] = ['hr', 'code', 'subscript', 'superscript', 'media', 'fullscreen']
 
 /**
- * 富文本编辑器
+ * @description 富文本编辑器
  * @see https://braft.margox.cn/
  */
 export const Editor: FunctionComponent<Props> = ({ value, onChange }) => {

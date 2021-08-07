@@ -101,7 +101,8 @@ module.exports = {
 
 + [ ] 支持 [Markdown 编辑器](https://github.com/Vanessa219/vditor)
 + [ ] 加入 [手绘板](https://github.com/steveruizok/perfect-freehand)
-+ [ ] 基础的门户网站结构设计
++ [ ] 权限和多用户设计；因此路由是动态的
++ [ ] 文章管理设计
   + [ ] 菜单：拖拽排序、基础字段编辑
   + [ ] 文章：图片、音视频、文件上传、基础字段编辑
 
@@ -120,6 +121,7 @@ module.exports = {
 ## 参考
 
 + [如何配置next-less-antd](https://github.com/SolidZORO/mkn)
++ [常用校验规则](https://github.com/any86/any-rule)
 + [腾讯云开发工具](https://docs.cloudbase.net/api-reference/webv2/initialization.html)
 + [将word文档转换为html](https://github.com/mwilliamson/mammoth.js)
 + [react-beautiful-dnd](https://github.com/atlassian/react-beautiful-dnd)

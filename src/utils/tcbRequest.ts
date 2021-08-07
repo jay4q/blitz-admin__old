@@ -46,7 +46,7 @@ const callFunction = async <ResponseData = any>(url: string, options: RequestOpt
 }
 
 /**
- * 合并云函数HTTP请求、云函数SDK请求
+ * @description 合并云函数HTTP请求、云函数SDK请求
  * @param url 
  * @param options 
  */

@@ -2,7 +2,7 @@ import { useInit } from '@/hooks'
 import { Spin } from 'antd'
 import { useRouter } from 'next/router'
 import { FunctionComponent } from 'react'
-import { Dashboard } from './Dashboard'
+import { DashboardLayout } from './DashboardLayout'
 
 /**
  * 统一的布局配置
@@ -25,5 +25,5 @@ export const LayoutWrapper: FunctionComponent = ({ children }) => {
   }
 
   // 其它管理页均使用统一布局
-  return <Dashboard>{children}</Dashboard>
+  return <DashboardLayout>{children}</DashboardLayout>
 }

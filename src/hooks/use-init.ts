@@ -4,7 +4,7 @@ import { useBoolean } from 'ahooks'
 import { useEffect } from 'react'
 
 /**
- * 处理应用中的初始化事务
+ * @description 处理应用中的初始化事务
  */
 export const useInit = () => {
   const [isFinishIniting, { setTrue: finishLoading }] = useBoolean(false)

@@ -3,7 +3,7 @@ import NProgress from 'nprogress'
 import { useRouter } from 'next/router'
 
 /**
- * 网页的命令式全局加载控件
+ * @description 网页的命令式全局加载控件
  */
 export const useGlobalLoading = () => {
   const router = useRouter()

@@ -6,7 +6,7 @@ let _app: cloudbase.app.App
 let _auth: cloudbase.auth.App
 
 /**
- * 获取云开发实例
+ * @description 获取云开发实例
  * @description 目前业务需求，只需要匿名登录即可，因为用户信息和认证由业务平台维护
  */
 export const getCloudBaseApp = async () => {
@@ -37,7 +37,7 @@ export const getCloudBaseApp = async () => {
 }
 
 /**
- * 获取 http 鉴权头部
+ * @description 获取 http 鉴权头部
  * @description http 请求时使用
  * @see https://cloud.tencent.com/document/product/876/44225
  */
@@ -48,7 +48,7 @@ export const getAuthHeader = async () => {
 }
 
 /**
- * 上传文件
+ * @description 上传文件
  * @param file 
  */
 export const uploadFile = async (file: File) => {
@@ -69,7 +69,7 @@ export const uploadFile = async (file: File) => {
 }
 
 /**
- * 获取云存储的访问链接
+ * @description 获取云存储的访问链接
  * @param url 云存储的特定url
  */
 export const getCloudUrl = (url?: string) => {

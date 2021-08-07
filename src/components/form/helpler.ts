@@ -9,7 +9,7 @@ import { getBlurhash } from 'blitz-libs'
 type UploadHandler = (file: File) => Promise<string>
 
 /**
- * 根据图片文件得到图片标签
+ * @description 根据图片文件得到图片标签
  * @param file 
  */
 const getImageElement = async (file: File) => {
@@ -24,7 +24,7 @@ const getImageElement = async (file: File) => {
 }
 
 /**
- * 图像压缩
+ * @description 图像压缩
  * @param file 
  * @param image 
  * @param filename 图片文件名

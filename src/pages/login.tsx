@@ -1,7 +1,7 @@
 import { LoginReq } from '@/apis/user/types'
 import { FunctionComponent } from 'react'
 import { useForm } from 'react-hook-form'
-import { useBoolean } from 'ahooks'
+import { useRequest } from 'ahooks'
 import { APP_NAME, APP_DESC } from '@/configs/meta'
 import { Footer } from '@/components/Footer'
 import FormItem from 'antd/lib/form/FormItem'
@@ -15,16 +15,11 @@ import { Head } from '@/components/Head'
  */
 const Page: FunctionComponent = () => {
   const { handleLogin } = useUser()
-  const [loading, { setTrue, setFalse }] = useBoolean()
   const { register, handleSubmit, formState: { errors } } = useForm<LoginReq>()
 
-  const onSubmit = async (req: LoginReq) => {
-    setTrue()
-    const resp = await handleLogin(req)
-    if (resp.code !== 200) {
-      setFalse()
-    }
-  }
+  const { loading, run: onSubmit } = useRequest(handleLogin, {
+    manual: true
+  })
 
   return (
     <>
