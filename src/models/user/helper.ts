@@ -1,7 +1,5 @@
-import { isArrayEmpty } from '@/utils/utils'
-
 /**
  * @description 是否是超级管理员
  * @param roles 
  */
-export const isSuper = (roles?: string[]) => !isArrayEmpty(roles) && roles![0] === '*'
+ export const isSuper = (roles?: string[]) => roles?.some(role => role === '*')
