@@ -3,11 +3,12 @@ import { Logo } from '@/components/Logo'
 import { APP_NAME } from '@/configs/meta'
 import { SIDE_MENUS } from '@/configs/route'
 import { useUser } from '@/models/user'
+import { isSuper } from '@/models/user/helper'
 import { isArrayEmpty } from '@/utils/utils'
 import { Dropdown, Layout, Menu, MenuProps, Spin } from 'antd'
 import { useRouter } from 'next/router'
 import { FunctionComponent, useCallback } from 'react'
-import { RiUserLine, RiLogoutCircleRLine } from 'react-icons/ri'
+import { RiAccountCircleLine, RiLogoutCircleRLine, RiGroupLine } from 'react-icons/ri'
 
 const { SubMenu } = Menu
 const { Header, Sider } = Layout
@@ -45,21 +46,31 @@ const LayoutMenu: FunctionComponent = () => {
 }
 
 const LayoutHeader: FunctionComponent = () => {
-  const { handleLogout } = useUser()
+  const router = useRouter()
+  const { handleLogout, user } = useUser()
 
-  const onMenuClick: MenuProps['onClick'] = useCallback(
-    event => {
-      const { key } = event
-      if (key === 'logout') {
-        handleLogout(false)
-        return
-      }
-    },
-    [],
-  )
+  const onMenuClick: MenuProps['onClick'] = useCallback(event => {
+    const { key } = event
+    if (key === 'logout') {
+      handleLogout(false)
+      return
+    } else if (key === 'admin-user') {
+      router.push('/admin-user')
+    }
+  }, [])
 
   const dropDown = (
     <Menu selectedKeys={[]} className='min-w-[160px]' onClick={onMenuClick}>
+      {
+        isSuper(user?.roles) && (
+          <Menu.Item key='admin-user'>
+            <span className='w-full h-full flex items-center'>
+              <RiGroupLine className='text-gray-500 m-0' />
+              <span className='ml-2 text-gray-500'>子用户管理</span>
+            </span>
+          </Menu.Item>
+        )
+      }
       <Menu.Item key='logout'>
         <span className='w-full h-full flex items-center'>
           <RiLogoutCircleRLine className='text-gray-500 m-0' />
@@ -73,7 +84,8 @@ const LayoutHeader: FunctionComponent = () => {
     <Header className='!bg-white flex-shrink-0 !px-6 flex items-center justify-end !h-12 z-0' style={{ boxShadow: '0 1px 4px rgb(0 21 41 / 8%)' }}>
       <Dropdown overlay={dropDown}>
         <span className='flex items-center h-12 px-3 cursor-pointer transition-colors duration-300 hover:bg-gray-50'>
-          <RiUserLine className='text-base text-gray-500' />
+          <RiAccountCircleLine className='text-base text-primary mr-2 opacity-80' />
+          <span className='text-gray-500'>{user?.nickname || '系统管理员'}</span>
         </span>
       </Dropdown>
     </Header>
@@ -98,9 +110,6 @@ export const DashboardLayout: FunctionComponent = ({ children }) => {
         </Sider>
         <Layout className='min-h-screen overflow-auto'>
           <LayoutHeader />
-          <div className='flex flex-col flex-auto flex-shrink-0 min-h-0'>
-            <Spin size='large' />
-          </div>
           {
             !!user ?
               <div className='flex flex-col flex-auto flex-shrink-0 min-h-0'>

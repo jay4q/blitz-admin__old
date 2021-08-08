@@ -6,7 +6,7 @@ import { tcbRequest } from '@/utils/tcbRequest'
  * @param req 
  */
 export const login = async (req: LoginReq) => {
-  const resp = await tcbRequest<LoginResp>('/admin/user/login', {
+  const resp = await tcbRequest<LoginResp>('/user/login', {
     data: req,
     method: 'POST'
   })

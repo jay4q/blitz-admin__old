@@ -101,7 +101,7 @@ module.exports = {
 
 + [ ] 支持 [Markdown 编辑器](https://github.com/Vanessa219/vditor)
 + [ ] 加入 [手绘板](https://github.com/steveruizok/perfect-freehand)
-+ [ ] 权限和多用户设计；因此路由是动态的
++ [ ] 根据权限，显示不同路由
 + [ ] 文章管理设计
   + [ ] 菜单：拖拽排序、基础字段编辑
   + [ ] 文章：图片、音视频、文件上传、基础字段编辑

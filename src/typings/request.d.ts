@@ -15,7 +15,7 @@ type IPaginationResp<Item = any> = {
 }
 
 interface BaseModel {
-  _id: number
+  _id: string
   created_at: Date
   updated_at: Date
   deleted_at: Date
