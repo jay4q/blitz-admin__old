@@ -1,7 +1,6 @@
 import { Footer } from '@/components/Footer'
 import { Logo } from '@/components/Logo'
 import { APP_NAME } from '@/configs/meta'
-import { SIDE_MENUS } from '@/configs/route'
 import { useUser } from '@/models/user'
 import { isSuper } from '@/models/user/helper'
 import { isArrayEmpty } from '@/utils/utils'
@@ -14,12 +13,13 @@ const { SubMenu } = Menu
 const { Header, Sider } = Layout
 
 const LayoutMenu: FunctionComponent = () => {
+  const { sideMenus } = useUser()
   const { pathname, push } = useRouter()
 
   return (
     <Menu theme='dark' mode='inline' selectedKeys={[pathname]} onClick={({ key }) => push(key)}>
       {
-        SIDE_MENUS?.map(menu => {
+        sideMenus.map(menu => {
           if (isArrayEmpty(menu.children)) {
             return (
               <Menu.Item key={menu.path} icon={menu.icon ? <menu.icon /> : null}>

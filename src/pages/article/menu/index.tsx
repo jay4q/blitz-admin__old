@@ -46,9 +46,6 @@ const mockTree = [
 // 当前菜单和子菜单都支持在当前页点击编辑，侧边弹窗形式
 // 编辑时候，默认是在左侧选中的菜单下进行添加，同时也可以考虑使用 TreeSelect 空间
 
-/**
- * 门户网站-菜单管理
- */
 const Index: FunctionComponent = () => {
   const [menus, setMenus] = useState(mockTree)
 

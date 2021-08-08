@@ -42,11 +42,11 @@ export type LoginReq = {
   password: string
 }
 
-export type GetUserProfileResp = {
+export interface GetUserProfileResp {
   user: UserModel
+  // todo: 根据不同的业务逻辑，可能还有别的
 }
 
-export type LoginResp = {
+export interface LoginResp extends GetUserProfileResp {
   token: string
-  user: UserModel
 }

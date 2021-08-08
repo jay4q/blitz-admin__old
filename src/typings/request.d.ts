@@ -27,4 +27,9 @@ interface MenuModel {
   icon?: import('react-icons').IconType
   // ! 这里最多一层子目录即可
   children?: MenuModel[]
+
+  /**
+   * @description 需要的权限
+   */
+  required?: string
 }

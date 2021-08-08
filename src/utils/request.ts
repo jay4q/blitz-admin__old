@@ -4,6 +4,7 @@ import { message } from 'antd'
 import { unstable_batchedUpdates } from 'react-dom'
 import { useUser } from '@/models/user'
 import { getAuthHeader } from './cloudbase'
+import Router from 'next/router'
 
 const HTTP_CODE_MAP: { [key in string]: string } = {
   "400": "请求内容有误",
@@ -48,6 +49,10 @@ export const businessErrorHandler = <ResponseData = any>(resp: IResponse<Respons
       unstable_batchedUpdates(() => {
         useUser.getState().handleLogout()
       })
+    } else if (403 === resp.code) {
+      message.error(HTTP_CODE_MAP['403'])
+      // 强制返回首页
+      Router.replace('/')
     } else {
       // 普通错误，弹框提示即可
       message.error(resp.message)

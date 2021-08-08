@@ -6,12 +6,18 @@ import { message } from 'antd'
 import Router from 'next/router'
 import create from 'zustand'
 import { devtools } from 'zustand/middleware'
+import { getUserStore } from './helper'
 
 type GlobalUser = {
   /**
    * @description 管理员个人资料；内容不存在时，也可以作为正在加载中的标识符
    */
   user?: UserModel
+
+  /**
+   * @description 当前管理员可用的侧边栏
+   */
+  sideMenus: MenuModel[]
 
   /**
    * @description 清理用户信息
@@ -37,6 +43,7 @@ type GlobalUser = {
 
 const USER_INITIAL_VALUES = {
   user: undefined,
+  sideMenus: [],
 }
 
 export const useUser = create<GlobalUser>(devtools(set => {
@@ -52,7 +59,7 @@ export const useUser = create<GlobalUser>(devtools(set => {
       // 缓存并持久化数据
       const { token, ...restData } = resp.data
       localStorage.setItem(STORE_TOKEN, resp.data.token)
-      set(restData)
+      set(getUserStore(restData))
       // 跳转至首页
       await Router.replace('/')
     }
@@ -75,7 +82,7 @@ export const useUser = create<GlobalUser>(devtools(set => {
   const getUserInfo = async () => {
     const resp = await getUserProfile()
     if (resp.data) {
-      set(resp.data)
+      set(getUserStore(resp.data))
     } else if (resp.code !== 401) {
       // 获取不到用户信息，判定为登出
       // 跳过 401 判断是因为已经在中间件中判断过了

@@ -40,15 +40,15 @@
 + 中后台管理端，是用户态优先并且没有SEO的必要，仅考虑前端渲染和静态文件部署，因此
   + 切忌：使用 nextjs 中服务端渲染的部分，例如 `getInitalProps` 等
   + 确保：仅在客户端引入 富文本编辑器、上传、图片展示组件
-+ 切忌：使用 `antd` 自带的图标，请使用 [react-icons](https://react-icons.github.io/react-icons)
++ 建议：不要使用 `antd` 自带的图标，请使用 [react-icons](https://react-icons.github.io/react-icons)
 + 建议：使用 `./src/utils/tcbRequest.ts` 发起请求，这样可以自由在 http 和 sdk 中切换请求云函数
   + 例如开发环境，连接本地用 web-server 模拟的云函数，这时就需要使用 http 请求
   + 例如产线环境，官方建议直接使用 sdk 请求云函数（http 触发云函数有限制）
 + 修改环境变量后，需要重新启动
 
-### 客户端组件
+### 1. 引入客户端组件
 
-部分组件例如 富文本编辑器、图片展示组件，因为在引入或者初始化过程中依赖到了浏览器的能力，因此 **不能在服务端引入**
+部分组件例如 富文本编辑器、图片展示组件，因为在初始化过程中依赖了 **浏览器** 的能力，因此应该避免进入 nextjs 的服务端渲染周期
 
 下面以富文本组件为例，展示如何正确引入客户端组件
 
@@ -64,7 +64,7 @@ const Editor = dynamic(
 // ...
 ```
 
-### 样式
+### 2. 样式
 
 + 配合 [antd](https://ant.design/components/overview-cn/) 和 [tailwindcss]('https://tailwindcss.com/') 开发界面
 + 根据设计师配色和布局要求，通过修改 `./src/styles/antd.less` 覆盖默认样式。可以参考 [默认样式](https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less) 进行细粒度控制
@@ -97,11 +97,18 @@ module.exports = {
 }
 ```
 
+### 3. 路由
+
+> 如何新增一个路由和对应权限
+
+1. 在 [页面模块](./src/pages) 下创建页面组件
+2. 如果需要在侧边栏展示，请在 [路由配置文件](./src/configs/route.ts) 内注册（注意，最大层级为2级）
+3. 一般来说，只需要在一级路由上配置 **角色权限** 即可，即设置 `required` 字段
+
 ## Todo
 
 + [ ] 支持 [Markdown 编辑器](https://github.com/Vanessa219/vditor)
 + [ ] 加入 [手绘板](https://github.com/steveruizok/perfect-freehand)
-+ [ ] 根据权限，显示不同路由
 + [ ] 文章管理设计
   + [ ] 菜单：拖拽排序、基础字段编辑
   + [ ] 文章：图片、音视频、文件上传、基础字段编辑

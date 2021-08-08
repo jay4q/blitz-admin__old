@@ -7,17 +7,18 @@ export const SIDE_MENUS: MenuModel[] = [
     icon: RiEyeLine,
   },
   {
-    path: '/portal',
-    name: '门户网站管理',
+    path: '/article',
+    name: '文章管理',
     icon: RiWindowLine,
+    required: 'article',
     children: [
       {
-        path: '/portal/menu',
+        path: '/article/menu',
         name: '菜单管理',
         icon: RiGitMergeLine,
       },
       {
-        path: '/portal/article',
+        path: '/article',
         name: '文章列表',
         icon: RiBookOpenLine,
       }
