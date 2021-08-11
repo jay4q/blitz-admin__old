@@ -12,17 +12,12 @@ export type UploaderProps = {
   type?: 'img' | 'audio' | 'video' | 'file'
 
   /**
-   * @description 当前已经上传的
+   * @description 当前已经上传的；如果只是单个文件，可以只传一个路径
    */
-  fileList: string[]
+  fileList?: string | string[]
 
   /**
-   * @description 新文件上传成功后的回调
+   * @description 更新图片列表
    */
-  onAppend: (url: string) => void
-
-  /**
-   * @description 文件删除后的回调
-   */
-  onRemove: (url: string) => void
+  onChange: (newList: string[]) => void
 }

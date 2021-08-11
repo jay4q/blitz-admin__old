@@ -14,9 +14,6 @@ type State = {
   loading: boolean
 }
 
-/**
- * @description 图片、音视频、文件上传工具；支持多个
- */
 export class Uploader extends PureComponent<UploaderProps, State> {
   readonly state: State = {
     loading: false
@@ -36,8 +33,8 @@ export class Uploader extends PureComponent<UploaderProps, State> {
 
   // 由于 disabled 会导致无法删除，因此如果文件数量受控，只是在用户点击上传时提示即可
   onBeforeUpload: UploadProps['beforeUpload'] = () => {
-    const { fileList, max = 1 } = this.props
-    const isLimited = fileList.length >= max
+    const { max = 1 } = this.props
+    const isLimited = this.originalFileList.length >= max
 
     if (isLimited) {
       message.error(`最多上传${max}个文件`)
@@ -72,7 +69,7 @@ export class Uploader extends PureComponent<UploaderProps, State> {
 
       if (typeof cloudUrl === 'string') {
         message.success('文件上传成功🎉🎉🎉')
-        this.props.onAppend(getCloudUrl(cloudUrl))
+        this.props.onChange([getCloudUrl(cloudUrl), ...this.originalFileList])
       }
     } catch (e) {
       message.error(e.message || '文件上传失败，请稍后再试')
@@ -83,7 +80,7 @@ export class Uploader extends PureComponent<UploaderProps, State> {
 
   onRemove: UploadProps['onRemove'] = async (file) => {
     if (file.url) {
-      this.props.onRemove(file.url)
+      this.props.onChange(this.originalFileList.filter(f => f !== file.url))
     }
   }
 
@@ -109,10 +106,20 @@ export class Uploader extends PureComponent<UploaderProps, State> {
     }
   }
 
-  get fileList(): UploadFile[] {
+  get originalFileList(): string[] {
     const { fileList } = this.props
 
-    return fileList.map(url => ({
+    if (!fileList) {
+      return []
+    } else if (typeof fileList === 'string') {
+      return [fileList]
+    } else {
+      return fileList
+    }
+  }
+
+  get fileList(): UploadFile[] {
+    return this.originalFileList.map(url => ({
       url,
       uid: url,
       status: 'done',

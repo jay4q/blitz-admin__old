@@ -11,6 +11,7 @@ import { useRequest } from 'ahooks'
 import { patchOne, postOne } from '@/apis/admin-user/mutation'
 import { getOne, getRoles } from '@/apis/admin-user/query'
 import { useEffect } from 'react'
+import { trimObject } from '@/utils/utils'
 
 /**
  * @description 新增/编辑管理员
@@ -57,13 +58,7 @@ const Page: FunctionComponent = () => {
   useEffect(() => {
     // 初始化表单信息
     if (defaultUser) {
-      reset({
-        enabled: defaultUser.enabled,
-        nickname: defaultUser.nickname,
-        username: defaultUser.username,
-        roles: defaultUser.roles,
-        // 注：这里不需要修改密码，因为加密了
-      })
+      reset(trimObject(defaultUser, ['_id', 'password']))
     } else {
       reset({
         // 新增时，默认应该启用

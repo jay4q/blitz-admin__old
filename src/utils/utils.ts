@@ -1,3 +1,5 @@
+import produce from 'immer'
+
 export const isArrayEmpty = (arr?: any[]) => !Array.isArray(arr) || arr.length === 0
 
 /**
@@ -13,4 +15,17 @@ export const convertBlob2File = (theBlob: Blob, fileName: string): File => {
 
   //Cast to a File() type
   return <File>theBlob
+}
+
+/**
+ * @description 移除对象中不需要的值
+ * @param obj 
+ * @param trims 键名集合
+ */
+export const trimObject = (obj: { [key in string]: any }, trims: string[]) => {
+  return produce(obj, draft => {
+    trims.forEach(t => {
+      delete draft[t]
+    })
+  })
 }
