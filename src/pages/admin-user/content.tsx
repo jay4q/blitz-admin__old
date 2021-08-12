@@ -18,7 +18,7 @@ import { trimObject } from '@/utils/utils'
  */
 const Page: FunctionComponent = () => {
   const router = useRouter()
-  const uid = router.query.uid as string || ''
+  const uid = useMemo(() => router.query.uid as string || '', [])
   const documentTitle = !!uid ? '修改管理员' : '新增管理员'
 
   const { reset, control, handleSubmit, formState: { errors } } = useForm<PostAdminUserReq>()
@@ -29,7 +29,7 @@ const Page: FunctionComponent = () => {
     } else {
       return await getRoles()
     }
-  }, { refreshDeps: [uid] })
+  })
 
   const defaultUser = !!uid ? initialData?.data?.user : undefined
   const defaultRoleOptions = useMemo(() => (
